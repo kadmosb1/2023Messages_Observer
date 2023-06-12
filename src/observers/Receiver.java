@@ -4,7 +4,7 @@ import observable.Observable;
 
 import java.util.regex.Pattern;
 
-public abstract class Receiver {
+public abstract class Receiver implements IObserver {
 
     protected String owner;
 
@@ -22,7 +22,7 @@ public abstract class Receiver {
     // Met deze methode wordt niet alleen het Observer Pattern geïmplementeerd.
     // Met update passen we ook het Template Method Pattern toe (dit is dus
     // de template method).
-    public void update (Object object) {
+    public void update (Observable observable, Object object) {
         System.out.printf ("Bericht wordt verstuurd naar: %s%n%s%n",
                            getReceiver (), getMessage (object));
     }
