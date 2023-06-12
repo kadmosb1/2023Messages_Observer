@@ -43,10 +43,10 @@ class ReceiverTest {
         String title = "Bericht wordt verstuurd naar: ";
 
         outContent.reset ();
-        new Email (email + "@" + domain, name).update (message);
+        new Email (email + "@" + domain, name).update (null, message);
         assertEquals (String.format ("%s\"%s\" <%s@%s>%n%s%n", title, name, email, domain, expectedMessage), outContent.toString ());
         outContent.reset ();
-        new Email (email, name).update (message);
+        new Email (email, name).update (null, message);
         assertEquals (String.format ("%s\"Front Office\" <frontoffice@domein.nl>%n%s%n", title, expectedMessage), outContent.toString ());
     }
 
@@ -58,10 +58,10 @@ class ReceiverTest {
         String title = "Bericht wordt verstuurd naar: ";
 
         outContent.reset ();
-        new Whatsapp (net + number, name).update (message);
+        new Whatsapp (net + number, name).update (null, message);
         assertEquals (String.format ("%s\"%s\" (%s%s)%n%s%n", title, name, net, number, expectedMessage), outContent.toString ());
         outContent.reset ();
-        new Whatsapp (number, name).update (message);
+        new Whatsapp (number, name).update (null, message);
         assertEquals (String.format ("%s\"Front Office\" (0686801234)%n%s%n", title, expectedMessage), outContent.toString ());
     }
 }
